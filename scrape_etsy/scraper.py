@@ -7,10 +7,19 @@ from get_proxies import *
 from replace_html_attributes import *
 
 
-# Available keywords: 'painting', 'photography', 'prints'
-# Input: up to 3 keywords and count of items to scrape
-
 def scrape_etsy(keywords: list, items_to_scrape: int) -> pd.DataFrame:
+    """
+    This function scrapes www.etsy.com for the provided number of items for each of the keywords.
+    It features rotating user-agents mirroring real agent, also rotating US proxies to avoid suspicion (bans).
+    This function returns pandas dataframe with the collected information and requires items to scrape.
+
+    :param keywords: list of keywords to scrape. Available keywords: painting, photography, prints.
+    Constrain: up to 3 keywords in the list! Example: ['painting', 'photography', 'prints']
+    :param items_to_scrape: integer of items to scrape for each keyword.
+    For example: 3000 - every keyword in the keywords list will be scraped for 3000 items.
+    :return: pandas dataframe from the scraped information.
+    """
+
     average_items_per_page = 35
     pages_to_scrape = math.ceil(items_to_scrape / average_items_per_page)
     df_list = []

@@ -1,11 +1,18 @@
 import os
 import psycopg2
 from sqlalchemy import create_engine
-from main_scrape import *
+from scraper import *
 from heroku_credentials import *
 
 
 def push_to_heroku(df: pd.DataFrame) -> None:
+    """
+    Functions takes a dataframe as an argument, then connects to a Heroku Postgres database.
+    In the database it creates two tables pushes the information into both of them.
+
+    :param df: Takes a pandas dataframe.
+    :return: None, data sits on Heroku Postgres database.
+    """
     # Heroku connection
     sql_connection = psycopg2.connect(
         database=DATABASE,
@@ -14,6 +21,7 @@ def push_to_heroku(df: pd.DataFrame) -> None:
         host=HOST,
         port=PORT
     )
+
     # Connect to DB
     cur = sql_connection.cursor()
 
@@ -35,6 +43,7 @@ def push_to_heroku(df: pd.DataFrame) -> None:
     );
 
     ''')
+
     # Get array of unique category names
     unique_categories = df['category'].unique()
 
@@ -71,6 +80,13 @@ def push_to_heroku(df: pd.DataFrame) -> None:
 
 
 def get_csv(path: str) -> None:
+    """
+    This functions takes a path as an argument as saves the etsy_data.csv file in provided local directory.
+
+    :param path: Provide a path where to save a csv file.
+    :return: None, csv file saved in the local directory.
+    """
+
     # Heroku connection
     sql_connection = psycopg2.connect(
         database=DATABASE,
@@ -79,6 +95,7 @@ def get_csv(path: str) -> None:
         host=HOST,
         port=PORT
     )
+
     # Connect to DB
     cur = sql_connection.cursor()
 
