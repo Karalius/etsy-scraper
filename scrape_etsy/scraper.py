@@ -9,15 +9,19 @@ from replace_html_attributes import *
 
 def scrape_etsy(keywords: list, items_to_scrape: int) -> pd.DataFrame:
     """
-    This function scrapes www.etsy.com for the provided number of items for each of the keywords.
-    It features rotating user-agents mirroring real agent, also rotating US proxies to avoid suspicion (bans).
-    This function returns pandas dataframe with the collected information and requires items to scrape.
+    This function scrapes https://www.etsy.com/c/art-and-collectibles for the given number of items for each of keyword.
+    It features rotating user-agents mirroring a real agent, also rotating US proxies to avoid suspicion (bans).
+    This function returns pandas dataframe with the collected information:
+    Category (keyword), title, price, item url, image url.
 
-    :param keywords: list of keywords to scrape. Available keywords: painting, photography, prints.
-    Constrain: up to 3 keywords in the list! Example: ['painting', 'photography', 'prints']
+    :param keywords: list of keywords to scrape.
+    Available keywords: painting, photography, prints.
+    Constrain: up to 12 keywords in the list! Check the website for the names.
+    Example, keyword on the web: Drawing & Illustration -> ['drawing-and-illustration'] for the scraper.
     :param items_to_scrape: integer of items to scrape for each keyword.
     For example: 3000 - every keyword in the keywords list will be scraped for 3000 items.
-    :return: pandas dataframe from the scraped information.
+    :return: pandas dataframe with the following columns:
+    Category (keyword), title, price, item url, image url.
     """
 
     average_items_per_page = 35

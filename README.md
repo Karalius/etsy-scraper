@@ -1,6 +1,6 @@
 # Scrape-etsy v1.0
 
-This scraper is based on https://www.etsy.com/c/art-and-collectibles. Currently it can scrape the following keywords:
+This scraper is based on https://www.etsy.com/c/art-and-collectibles. Currently, it can scrape the following keywords:
 * prints
 * drawing-and-illustration
 * painting
@@ -14,7 +14,7 @@ This scraper is based on https://www.etsy.com/c/art-and-collectibles. Currently 
 * glass-art
 * artist-tradings-cards
 
-From the main scraping function you will receive the following output (dataframe column names):
+From the main scraping function you will receive the following output (```df``` column names):
 * Category
 
 * Title
@@ -53,15 +53,16 @@ How does the ```df``` look like?
 
 **Heroku**:
 
-Firstly define your Heroku Postgres credentials in the ```heroku_credentials.py``` file.
-We will use the same ```df```, which is defined above, to
+Firstly define your ```Heroku Postgres``` credentials in the ```heroku_credentials.py``` file.
+
+We will use the same ```df```, which is defined above, to push the dataframe to ```Heroku Postgres``` database.
 ```
 from heroku_n_csv import push_to_heroku
 
 push_to_heroku(df)
 ```
 
-**Get csv to your provided path! In this case, we use dekstop:**
+**Get csv to your provided path! In this case, we use the desktop as our location:**
 ```
 from heroku_n_csv import get_csv
 
