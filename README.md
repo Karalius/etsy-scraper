@@ -3,11 +3,8 @@
 ![Scraper Etsy](https://i.imgur.com/MuGjvmF.png)
 
 This scraper works on [Etsy](https://www.etsy.com/c/art-and-collectibles) E-Commerce shop. Currently, it can scrape the following keywords:
+
 ![Keywords](https://i.imgur.com/zGYu5UI.jpg)
-
-From the main scraping function you will receive the following output (```df``` column names):
-
-Category, Title, Price (USD), URL to the item, URL to the image of the item.
 
 ## Features
 There is an implemented option to connect to your ```Heroku Postgres Database``` and store the scraped data in format of ```two tables```.
