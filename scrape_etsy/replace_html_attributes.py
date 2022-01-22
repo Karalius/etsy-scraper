@@ -2,7 +2,9 @@ from bs4 import BeautifulSoup
 import requests
 
 
-def replace_attr(html_doc: requests.models.Response, from_attr: str, to_attr: str) -> BeautifulSoup:
+def replace_attr(
+    html_doc: requests.models.Response, from_attr: str, to_attr: str
+) -> BeautifulSoup:
     """
     Function takes the arguments explained below and returns edited html page with new tags
 
@@ -12,7 +14,7 @@ def replace_attr(html_doc: requests.models.Response, from_attr: str, to_attr: st
     :return: returns response page with new tag name in the html
     """
 
-    soup = BeautifulSoup(html_doc.content, 'html.parser')
+    soup = BeautifulSoup(html_doc.content, "html.parser")
     tags = soup(attrs={from_attr: True})
 
     # Replace tags with new tag
